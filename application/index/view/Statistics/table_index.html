@@ -1,0 +1,125 @@
+<!--<link rel="stylesheet" href="__PUBLIC__/assets/vendor/chartist/css/chartist-custom.css">-->
+<script src="__PUBLIC__/echarts/echarts.js"></script>
+<script src="__PUBLIC__/echarts/macarons.js"></script>
+<div id="biaoge">
+		<div class="container-fluid" style="width: 1900px; height: 450px; margin-left: 1%; margin-top: 1%;">
+			<h3 class="page-title" onclick="Tongjibiao('tuxing')">表单统计</h3>
+			<button type="button"  class="btn btn btn-primary" style="opacity: 0.4;" onclick="Tongjibiao('tuxing')">树状图</button>
+			<button type="button" class="btn btn-primary" style="" onclick="Tongjibiao('biaoge')">统计表</button>
+			<div class=""  style="padding-top:1%;">
+				<div class="panel">
+					<div class="panel-heading">
+						<div class="">
+							<div class="panel">
+								<div class="panel-heading">
+								</div>
+								<div class="panel-body">
+									<table class="table table-striped" style="text-align:center;vertical-align:middle;">
+										<thead>
+										<tr>
+											<th></th>
+											{volist name="b_ssum" id="vo"}
+<!--											<th></th>-->
+											<th style="text-align:center;vertical-align:middle;">{$vo}</th>
+											{/volist}
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<th style="text-align:center;vertical-align:middle;">易企秀</th>
+											{volist name="b_eqx" id="vo"}
+											<th style="text-align:center;vertical-align:middle;"><?php if($vo == 0){ }else{ ?>{$vo}<?php } ?></th>
+											{/volist}
+										</tr>
+										<tr>
+											<th style="text-align:center;vertical-align:middle;">文章</th>
+											{volist name="b_article" id="vo"}
+											<th style="text-align:center;vertical-align:middle;"><?php if($vo == 0){ }else{ ?>{$vo}<?php } ?></th>
+											{/volist}
+										</tr>
+										<tr>
+											<th style="text-align:center;vertical-align:middle;">视频</th>
+											{volist name="b_video" id="vo"}
+											<th style="text-align:center;vertical-align:middle;"><?php if($vo == 0){ }else{ ?>{$vo}<?php } ?></th>
+											{/volist}
+										</tr>
+										<tr>
+											<th style="text-align:center;vertical-align:middle;">音频</th>
+											{volist name="b_dubbing" id="vo"}
+											<th style="text-align:center;vertical-align:middle;"><?php if($vo == 0){ }else{ ?>{$vo}<?php } ?></th>
+											{/volist}
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid" style="width: 1900px; height: 65px; margin-left: 1%; margin-top: 2%;">
+			<div class="panel-body" style="padding-bottom:0px; padding-top: 0px;">
+				<div class="panel-heading" style="margin-left: 35%">
+					<p class="demo-button">
+						<button type="button" class="btn btn-primary" onclick="Tongji('qitian')">最近七天的统计</button>
+						<button type="button" class="btn btn-primary" onclick="Tongji('day')">每天的统计</button>
+						<button type="button" class="btn btn-primary" onclick="Tongji('month')">每月的统计</button>
+						<button type="button" class="btn btn-primary" onclick="Tongji('year')">每年的统计</button>
+					</p>
+				</div>
+			</div>
+		</div>
+</div>
+<div class="container-fluid" style="width: 1900px; height: 950px; margin-left: 1%; margin-top: 1%;">
+	<div class="">
+		<div class="panel">
+			<div class="panel-heading">
+				<h3 class="panel-title">统计表</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th></th>
+						<th>{$count.name}</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<th>易企秀总数</th>
+						<td>{$count.eqx}</td>
+					</tr>
+					<tr>
+						<th>文章总数</th>
+						<td>{$count.article}</td>
+					</tr>
+					<tr>
+						<th>视频总数</th>
+						<td>{$count.video}</td>
+					</tr>
+					<tr>
+						<th>音频总数</td>
+						<td>{$count.dubbing}</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function Tongji(val){
+
+		$('#content-load').load( "{:url("Index/Statistics/table_index")}" + "?type=" + val );
+	}
+	
+	function Tongjibiao(val) {
+		if (val =='biaoge'){
+			$('#content-load').load( "{:url("Index/Statistics/table_index")}" + "?type=" + val );
+		}else{
+			$('#content-load').load( "{:url("Index/Statistics/Index")}" + "?type=" + val );
+		}
+	}
+</script>
+</html>
