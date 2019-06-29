@@ -70,13 +70,14 @@
         </div>
         {empty name="$edit.id"}
         {else /}
-        <div class="col-md-6">
-                <h3 class="page-title"> 预览</h3>
+        <div class="col-md-5">
+                <h3 class="page-title">预览</h3>
                 <div class="panel">
                     <div class="panel-heading">
                         <h3 class="panel-title"></h3>
                     </div>
                     <form class="form-auth-small">
+                        <div class="panel-body"  enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="" class="control-label sr-only">标题</label>
                                 <input type="text" class="form-control input-lg" disabled="true" value="{$edit.title}"  autocomplete="off">
@@ -86,22 +87,23 @@
                                 <input type="text" class="form-control input-lg" disabled="true" value="{$edit.subheading}"  autocomplete="off">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="文章内容" disabled="true"  autocomplete="off">{$edit.content}</textarea>
+                                <textarea class="form-control" placeholder="文章内容" disabled="true" rows="20" autocomplete="off">{$edit.content}</textarea>
                             </div>
                             <div class="form-group row">
                                 <div class="col-lg-5">
                                     <!--                                头图上传-->
                                     <div class="form-group">
-                                        <input id="file-bb" class="file" type="file" disabled="true" style="display: none"  accept="image/*">
+                                        <input id="file-bb" class="file" type="file" disabled="true"  accept="image/*">
                                     </div>
                                 </div>
                                 <div class="col-lg-7">
                                     <!--                                大图上传-->
                                     <div class="form-group">
-                                        <input id="file-cc" class="file" type="file"  disabled="true"  style="display: none"   accept="image/*">
+                                        <input id="file-cc" class="file" type="file"  disabled="true"  accept="image/*">
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 </div>
         </div>

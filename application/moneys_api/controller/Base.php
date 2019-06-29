@@ -50,11 +50,10 @@
       ksort($_GET);
          $this->request = Request::instance();
 
-          //1. 检车请求时间是否超时
-//         $this->check_time($this->request->only(['time']));
-
-          //2. 验证token
-//         $this->check_token($this->request->param());
+//          1. 检车请求时间是否超时
+         $this->check_time($this->request->only(['time']));
+//          2. 验证token
+         $this->check_token($this->request->param());
 
           //3. 验证参数,返回成功过滤后的参数数组
           $this->params = $this->checkParams($this->request->param(true));
@@ -66,7 +65,7 @@
           if (!isset($arr['time']) || intval($arr['time']) <= 1) {
               $this->returnMsg(400, '时间戳不存在!');
           }
-          if (time() - intval($arr['time']) > 10) {
+          if (time() - intval($arr['time']) > 60) {
               $this->returnMsg(400, '请求超时!');
           }
       }
@@ -97,12 +96,8 @@
           /******** 服务器生产token **********/
 
           //如果已经传递token数据，就删除token数据，生成服务端token与客户端的token做对比
-          unset($arr['token']);
-          $service_token='';
-          foreach ($arr as $key => $value){
-              $service_token .=md5($value);
-          }
-
+          $time=$arr['time'];
+          $service_token=md5($time);
           $service_token = md5('money_'.$service_token.'moneys_'); //服务器生产的token
           /******** 比较token ，返回结果**********/
           if ($api_token !== $service_token){

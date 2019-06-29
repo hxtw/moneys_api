@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\phpStudy\PHPTutorial\WWW\My_moneys\public/../application/index\view\Login\login.html";i:1561447210;}*/ ?>
 <!doctype html>
 <html lang="en" class="fullscreen-bg">
 
@@ -7,15 +8,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="__PUBLIC__/assets/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="__PUBLIC__/assets/vendor/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="__PUBLIC__/assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="/static/assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/assets/vendor/linearicons/style.css">
 	<!-- MAIN CSS -->
-	<link rel="stylesheet" href="__PUBLIC__/assets/css/main.css">
+	<link rel="stylesheet" href="/static/assets/css/main.css">
 	<!-- GOOGLE FONTS -->
 	<!-- ICONS -->
-	<link rel="apple-touch-icon" sizes="76x76" href="__PUBLIC__/assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="__PUBLIC__/assets/img/favicon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/assets/img/favicon.png">
 </head>
 
 <body>
@@ -27,7 +28,7 @@
 					<div class="left">
 						<div class="content">
 							<div class="header">
-								<div class="logo text-center"><img src="__PUBLIC__/assets/img/logo-dark.png" alt="My money Logo"></div>
+								<div class="logo text-center"><img src="/static/assets/img/logo-dark.png" alt="My money Logo"></div>
 								<p class="lead">Login to your account</p>
 							</div>
 							<form class="form-auth-small" action="index.html">
@@ -63,8 +64,8 @@
 	</div>
 	<!-- END WRAPPER -->
 </body>
-<script type="text/javascript" src="__PUBLIC__/assets/vendor/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript" src="/static/assets/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/layer/layer.js"></script>
 
 <script>
 	$("#phoneLog").click(function (){
@@ -72,7 +73,7 @@
 		var password=$("#my_password").val();
 		$.ajax({
 			type: 'post',
-			url: "{:url('index/login/login_phone')}",
+			url: "<?php echo url('index/login/login_phone'); ?>",
 			data: {
 				number:number,
 				password:password,
@@ -84,7 +85,7 @@
 						icon: 1,//提示的样式
 						time: 2000, //2秒关闭（如果不配置，默认是3秒）//设置后不需要自己写定时关闭了，单位是毫秒
 						end:function(){
-							location.href="{:url('index/Index/index')}";
+							location.href="<?php echo url('index/Index/index'); ?>";
 						}
 					});
 				}else if(data=="user_Close"){

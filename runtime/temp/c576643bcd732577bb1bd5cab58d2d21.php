@@ -1,35 +1,36 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:91:"D:\phpStudy\PHPTutorial\WWW\My_moneys\public/../application/index\view\Video\add_index.html";i:1561599577;}*/ ?>
 <!--视频投稿-->
 <div class="container-fluid">
     <h3 class="page-title">视频投稿</h3>
     <div class="row">
-        {empty name="$edit.id"}
+        <?php if(empty($edit['id']) || (($edit['id'] instanceof \think\Collection || $edit['id'] instanceof \think\Paginator ) && $edit['id']->isEmpty())): ?>
         <div class="col-md-8">
-        {else /}
+        <?php else: ?>
         <div class="col-md-6">
-        {/empty}
+        <?php endif; ?>
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title"></h3>
                 </div>
                 <form class="form-auth-small" id="form-video-add" enctype="multipart/form-data">
 <!--                    防止二次提交的token-->
-                    <input type="hidden" name="add_Jianc" value="{:session('add_Jianc')}" />
-                    <input type="hidden" name="edit_id" value="{$edit.id}" />
+                    <input type="hidden" name="add_Jianc" value="<?php echo session('add_Jianc'); ?>" />
+                    <input type="hidden" name="edit_id" value="<?php echo $edit['id']; ?>" />
                     <input type="hidden" name="edit_name" id="edit_name" value="video_pi_uploads" />
-                    <input type="hidden" name="edit_simg" id="edit_simg" value="{$edit.simg}" />
-                    <input type="hidden" name="ht_simg" id="ht_simg" value="{$edit.ht_simg}" />
-                    <input type="hidden" name="edit_himg" id="edit_himg" value="{$edit.himg}" />
-                    <input type="hidden" name="ht_himg" id="ht_himg" value="{$edit.ht_himg}" />
-                    <input type="hidden" name="edit_video" id="edit_video" value="{$edit.video}" />
+                    <input type="hidden" name="edit_simg" id="edit_simg" value="<?php echo $edit['simg']; ?>" />
+                    <input type="hidden" name="ht_simg" id="ht_simg" value="<?php echo $edit['ht_simg']; ?>" />
+                    <input type="hidden" name="edit_himg" id="edit_himg" value="<?php echo $edit['himg']; ?>" />
+                    <input type="hidden" name="ht_himg" id="ht_himg" value="<?php echo $edit['ht_himg']; ?>" />
+                    <input type="hidden" name="edit_video" id="edit_video" value="<?php echo $edit['video']; ?>" />
                     <input type="hidden" name="edit_name_video"  id="edit_name_video"  value="video_vi_uploads" />
                     <div class="panel-body" id="uploadForm" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="" class="control-label sr-only">标题</label>
-                            <input type="text" class="form-control input-lg liulan" value="{$edit.title}" id="title" placeholder="标题" name="title" autocomplete="off">
+                            <input type="text" class="form-control input-lg liulan" value="<?php echo $edit['title']; ?>" id="title" placeholder="标题" name="title" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label sr-only">副标题</label>
-                            <input type="text" class="form-control input-lg liulan" value="{$edit.subheading}" id="subheading" placeholder="副标题" name="subheading" autocomplete="off">
+                            <input type="text" class="form-control input-lg liulan" value="<?php echo $edit['subheading']; ?>" id="subheading" placeholder="副标题" name="subheading" autocomplete="off">
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-4">
@@ -55,31 +56,27 @@
                 </form>
                 <div class="panel-footer">
                     <div class="row">
-                        {if condition="$type == liulan"}
+                        <?php if($type == liulan): ?>
                         <div class="col-md-2" style="margin-left: 37%;">
-                            <button type="button" class="btn btn-success btn-block btn-lg" onclick="list_index({$page})" >返回</button>
+                            <button type="button" class="btn btn-success btn-block btn-lg" onclick="list_index(<?php echo $page; ?>)" >返回</button>
                         </div>
-                        {else /}
-                            {empty name="$edit.id"}
+                        <?php else: if(empty($edit['id']) || (($edit['id'] instanceof \think\Collection || $edit['id'] instanceof \think\Paginator ) && $edit['id']->isEmpty())): ?>
                           <div class="col-md-2" style="margin-left: 37%;">
                             <button type="button" class="btn btn-primary btn-block btn-lg" onclick="Panduan('tianjia')">提交审核</button>
                            </div>
-                            {else /}
+                            <?php else: ?>
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-success btn-block btn-lg" onclick="list_index({$page})" >返回</button>
+                                <button type="button" class="btn btn-success btn-block btn-lg" onclick="list_index(<?php echo $page; ?>)" >返回</button>
                             </div>
                             <div class="col-md-6">
                                 <button type="button" class="btn btn-primary btn-block btn-lg" onclick="Panduan('xiugai')">修改</button>
                             </div>
-                            {/empty}
-
-                        {/if}
+                            <?php endif; endif; ?>
                     </div>
                 </div>
             </div>
         </div>
-            {empty name="$edit.id"}
-            {else /}
+            <?php if(empty($edit['id']) || (($edit['id'] instanceof \think\Collection || $edit['id'] instanceof \think\Paginator ) && $edit['id']->isEmpty())): else: ?>
             <div class="col-md-6">
                 <div class="panel">
                     <div class="panel-heading">
@@ -89,11 +86,11 @@
                         <div class="panel-body" >
                             <div class="form-group">
                                 <label for="" class="control-label sr-only">标题</label>
-                                <input type="text" class="form-control input-lg liulan" value="{$edit.title}"  placeholder="标题"  autocomplete="off">
+                                <input type="text" class="form-control input-lg liulan" value="<?php echo $edit['title']; ?>"  placeholder="标题"  autocomplete="off">
                             </div>
                             <div class="form-group">
                                 <label for="" class="control-label sr-only">副标题</label>
-                                <input type="text" class="form-control input-lg liulan" value="{$edit.subheading}"  placeholder="副标题"  autocomplete="off">
+                                <input type="text" class="form-control input-lg liulan" value="<?php echo $edit['subheading']; ?>"  placeholder="副标题"  autocomplete="off">
                             </div>
                             <div class="form-group row">
                                 <div class="col-lg-4">
@@ -117,19 +114,19 @@
                     </form>
                 </div>
             </div>
-            {/empty}
+            <?php endif; ?>
     </div>
-    <input type="hidden" id="liuan_type" value="{$type}">
+    <input type="hidden" id="liuan_type" value="<?php echo $type; ?>">
 </div>
 <script type="text/javascript">
     //返回列表
     function list_index(page) {
-        $('#content-load').load( "{:url("Index/Video/list_index")}" + "?page=" + page);
+        $('#content-load').load( "<?php echo url("Index/Video/list_index"); ?>" + "?page=" + page);
     }
 </script>
 <!--头图/大图 ————上传、删除 ————操作-->
-<script src="__PUBLIC__/video_file/js/My_moneys_picture.js" type="text/javascript"></script>
-<script src="__PUBLIC__/video_file/js/My_moneys_picturesee.js" type="text/javascript"></script>
+<script src="/static/video_file/js/My_moneys_picture.js" type="text/javascript"></script>
+<script src="/static/video_file/js/My_moneys_picturesee.js" type="text/javascript"></script>
     <script>
     // 提交格式判断
     function Panduan(type) {
@@ -183,7 +180,7 @@
 /*    视频上传功能 -配置        */
     $("#file-0a").fileinput({
         dropZoneTitle : "请上传视频！", //标题
-        uploadUrl : "{:url('index/Vadd/createUploadVideo')}", //上传地址
+        uploadUrl : "<?php echo url('index/Vadd/createUploadVideo'); ?>", //上传地址
         language : "zh",//语言
         showCaption : false,//上传名称隐藏
         showUpload : true,//上传按键取消
@@ -256,7 +253,7 @@
         var value =$(" #ziyuan_id").val();
         if (value) {
             $.ajax({
-                url: "{:URL('index/Video/add_videl')}",
+                url: "<?php echo URL('index/Video/add_videl'); ?>",
                 type: 'post',
                 data: {value},
                 success: function (arr) {
@@ -288,7 +285,7 @@
         //加载层
         layer.load();
         $.ajax({
-            url: "{:URL('index/Video/Video_add')}",
+            url: "<?php echo URL('index/Video/Video_add'); ?>",
             type: 'post',
             data: $("#form-video-add").serializeArray(),
             success: function (arr) {
@@ -298,7 +295,7 @@
                         icon: 1,//提示的样式
                         time: 1000, //2秒关闭（如果不配置，默认是3秒）//设置后不需要自己写定时关闭了，单位是毫秒
                         end:function(){
-                            $('#content-load').load("{:url('index/Video/list_index')}");
+                            $('#content-load').load("<?php echo url('index/Video/list_index'); ?>");
                         }
                     });
                 }else if(arr == "vde_no"){
@@ -340,7 +337,7 @@
         // 加载层
         layer.load();
         $.ajax({
-            url: "{:URL('index/Video/video_edit')}",
+            url: "<?php echo URL('index/Video/video_edit'); ?>",
             type: 'post',
             data: $("#form-video-add").serializeArray(),
             success: function (arr) {
@@ -350,8 +347,8 @@
                         icon: 1,//提示的样式
                         time: 1000, //2秒关闭（如果不配置，默认是3秒）//设置后不需要自己写定时关闭了，单位是毫秒
                         end:function(){
-                            // location.href="{:url('index/Eqx/list_index')}";
-                            $('#content-load').load("{:url('index/Video/list_index')}");
+                            // location.href="<?php echo url('index/Eqx/list_index'); ?>";
+                            $('#content-load').load("<?php echo url('index/Video/list_index'); ?>");
                         }
                     });
                 }else if(arr == "vdo_no"){

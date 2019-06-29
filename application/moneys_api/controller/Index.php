@@ -12,8 +12,9 @@ class Index extends Controller
     //-------------------------------------主页导航----------------------------------------------
     public function index()
     {
-
-        echo 'moneys_api/index111';
+        $time=time();
+        echo"api.th2324.com/eqx/".$time.'/'.md5('money_'.md5($time).'moneys_');
+//        echo 'moneys_api/index111';
     }
 }
 

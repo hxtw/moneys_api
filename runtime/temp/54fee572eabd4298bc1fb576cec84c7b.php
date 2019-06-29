@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\phpStudy\PHPTutorial\WWW\My_moneys\public/../application/index\view\Index\index.html";i:1561625427;}*/ ?>
 <!doctype html>
 <html lang="en">
 
@@ -7,18 +8,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="__PUBLIC__/assets/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="__PUBLIC__/assets/vendor/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="__PUBLIC__/assets/vendor/linearicons/style.css">
-	<link href="__PUBLIC__/video_file/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-<!--	<link rel="stylesheet" href="__PUBLIC__/assets/vendor/fileinput/bootstrap-fileinput.css">-->
+	<link rel="stylesheet" href="/static/assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/assets/vendor/linearicons/style.css">
+	<link href="/static/video_file/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+<!--	<link rel="stylesheet" href="/static/assets/vendor/fileinput/bootstrap-fileinput.css">-->
 	<!-- MAIN CSS -->
-	<link rel="stylesheet" href="__PUBLIC__/assets/css/main.css">
+	<link rel="stylesheet" href="/static/assets/css/main.css">
 	<!-- ICONS -->
-	<link rel="apple-touch-icon" sizes="76x76" href="__PUBLIC__/assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="__PUBLIC__/assets/img/favicon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/assets/img/favicon.png">
 	<!-- bootstrap time -->
-	<link rel="stylesheet" href="__PUBLIC__/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="/static/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
 </head>
 <style>
 	.xxxx{
@@ -36,7 +37,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="javascript:void(0);"><img src="__PUBLIC__/assets/img/logo-dark.png" alt="My money" class="img-responsive logo"></a>
+				<a href="javascript:void(0);"><img src="/static/assets/img/logo-dark.png" alt="My money" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -66,7 +67,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><img src="__PUBLIC__/assets/img/user.png" class="img-circle" alt="Avatar"> <span>{$Think.Cookie.my_money_user}
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><img src="/static/assets/img/user.png" class="img-circle" alt="Avatar"> <span><?php echo \think\Cookie::get('my_money_user'); ?>
 							</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu" style="min-width:150px;">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>我的信息</span></a></li>
@@ -84,42 +85,39 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="javascript:void(0);" data-href="module/home.html" class="active"><i class="lnr lnr-home"></i> <span>首页</span></a></li>
-						{if condition="in_array(Eqx,$comma_separated)"}
+						<?php if(in_array(Eqx,$comma_separated)): ?>
 						<li>
 							<a href="#navEqx" data-toggle="collapse" class="collapsed"><i class="lnr lnr-laptop-phone"></i> <span>易企秀</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="navEqx" class="collapse">
 								<ul class="nav">
-									<li><a href="javascript:void(0);" class="" data-href="{:url('index/Eqx/add_index')}"><i class="lnr lnr-rocket"></i> <span>投稿</span></a></li>
-									<li><a href="javascript:void(0);" class="" data-href="{:url('index/Eqx/list_index')}"><i class="lnr lnr-hourglass"></i> <span>提审记录</span></a></li>
+									<li><a href="javascript:void(0);" class="" data-href="<?php echo url('index/Eqx/add_index'); ?>"><i class="lnr lnr-rocket"></i> <span>投稿</span></a></li>
+									<li><a href="javascript:void(0);" class="" data-href="<?php echo url('index/Eqx/list_index'); ?>"><i class="lnr lnr-hourglass"></i> <span>提审记录</span></a></li>
 								</ul>
 							</div>
 						</li>
-						{/if}
-						{if condition="in_array(Article,$comma_separated)"}
+						<?php endif; if(in_array(Article,$comma_separated)): ?>
 						<li>
 							<a href="#navEssay" data-toggle="collapse" class="collapsed"><i class="lnr lnr-pencil"></i> <span>文章</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="navEssay" class="collapse">
 								<ul class="nav">
-									<li><a href="javascript:void(0);" class="" data-href="{:url('index/Article/add_index')}"><i class="lnr lnr-rocket"></i> <span>投稿</span></a></li>
-									<li><a href="javascript:void(0);" class="" data-href="{:url('index/Article/list_index')}"><i class="lnr lnr-hourglass"></i> <span>提审记录</span></a></li>
+									<li><a href="javascript:void(0);" class="" data-href="<?php echo url('index/Article/add_index'); ?>"><i class="lnr lnr-rocket"></i> <span>投稿</span></a></li>
+									<li><a href="javascript:void(0);" class="" data-href="<?php echo url('index/Article/list_index'); ?>"><i class="lnr lnr-hourglass"></i> <span>提审记录</span></a></li>
 									<li><a href="javascript:void(0);" class=""><i class="lnr lnr-question-circle"></i> <span>注意</span></a></li>
 								</ul>
 							</div>
 						</li>
-						{/if}
-						{if condition="in_array(Video,$comma_separated)"}
+						<?php endif; if(in_array(Video,$comma_separated)): ?>
 						<li>
 							<a href="#navVideo" data-toggle="collapse" class="collapsed"><i class="lnr lnr-camera-video"></i> <span>视频</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="navVideo" class="collapse">
 								<ul class="nav">
-									<li><a href="javascript:void(0);" class="" data-href="{:url('index/Video/add_index')}"><i class="lnr lnr-rocket"></i> <span>投稿</span></a></li>
-									<li><a href="javascript:void(0);" class="" data-href="{:url('index/Video/list_index')}"><i class="lnr lnr-hourglass"></i> <span>提审记录</span></a></li>
+									<li><a href="javascript:void(0);" class="" data-href="<?php echo url('index/Video/add_index'); ?>"><i class="lnr lnr-rocket"></i> <span>投稿</span></a></li>
+									<li><a href="javascript:void(0);" class="" data-href="<?php echo url('index/Video/list_index'); ?>"><i class="lnr lnr-hourglass"></i> <span>提审记录</span></a></li>
 									<li><a href="javascript:void(0);" class=""><i class="lnr lnr-question-circle"></i> <span>注意</span></a></li>
 								</ul>
 							</div>
 						</li>
-						{/if}
-						{if condition="in_array(Ih5,$comma_separated)"}
+						<?php endif; if(in_array(Ih5,$comma_separated)): ?>
 						<li>
 							<a href="#navIh5" data-toggle="collapse" class="collapsed"><i class="lnr lnr-camera-video"></i> <span>ih5</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="navIh5" class="collapse">
@@ -130,24 +128,23 @@
 								</ul>
 							</div>
 						</li>
-						{/if}
-						{if condition="in_array(Dubbing,$comma_separated)"}
+						<?php endif; if(in_array(Dubbing,$comma_separated)): ?>
 						<li>
 							<a href="#navDub" data-toggle="collapse" class="collapsed"><i class="lnr lnr-mic"></i> <span>配音</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="navDub" class="collapse">
 								<ul class="nav">
-									<li><a href="javascript:void(0);" class="" data-href="{:url('index/Dubbing/list_order')}"><i class="lnr lnr-alarm"></i> <span>来单了</span></a></li>
-									<li><a href="javascript:void(0);" class="" data-href="{:url('index/Dubbing/list_index')}"><i class="lnr lnr-hourglass"></i> <span>提审记录</span></a></li>
+									<li><a href="javascript:void(0);" class="" data-href="<?php echo url('index/Dubbing/list_order'); ?>"><i class="lnr lnr-alarm"></i> <span>来单了</span></a></li>
+									<li><a href="javascript:void(0);" class="" data-href="<?php echo url('index/Dubbing/list_index'); ?>"><i class="lnr lnr-hourglass"></i> <span>提审记录</span></a></li>
 									<li><a href="javascript:void(0);" class=""><i class="lnr lnr-question-circle"></i> <span>注意</span></a></li>
 								</ul>
 							</div>
 						</li>
-						{/if}
+						<?php endif; ?>
 						<li>
                             <a href="#navTj" data-toggle="collapse" class="collapsed"><i class="lnr lnr-cog"></i> <span>我的信息</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                             <div id="navTj" class="collapse">
                                 <ul class="nav">
-                                    <li><a href="javascript:void(0);" class="" data-href="{:url('index/Statistics/index')}"><i class="lnr lnr-chart-bars"></i> <span>统计</span></a></li>
+                                    <li><a href="javascript:void(0);" class="" data-href="<?php echo url('index/Statistics/index'); ?>"><i class="lnr lnr-chart-bars"></i> <span>统计</span></a></li>
                                 </ul>
                             </div>
                         </li>
@@ -173,30 +170,30 @@
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 <!--	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>-->
-<!--	<script src="__PUBLIC__/assets/vendor/jquery/jquery.min.js"></script>-->
-	<script src="__PUBLIC__/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-	<script src="__PUBLIC__/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="__PUBLIC__/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!--	<script src="__PUBLIC__/assets/vendor/fileinput/bootstrap-fileinput.js"></script>-->
-	<script src="__PUBLIC__/video_file/js/fileinput.js" type="text/javascript"></script>
-	<script src="__PUBLIC__/video_file/js/locales/zh.js" type="text/javascript"></script>
-	<script src="__PUBLIC__/assets/scripts/klorofil-common.js"></script>
-	<script src="__PUBLIC__/layer/layer.js"></script>
+<!--	<script src="/static/assets/vendor/jquery/jquery.min.js"></script>-->
+	<script src="/static/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+	<script src="/static/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/static/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!--	<script src="/static/assets/vendor/fileinput/bootstrap-fileinput.js"></script>-->
+	<script src="/static/video_file/js/fileinput.js" type="text/javascript"></script>
+	<script src="/static/video_file/js/locales/zh.js" type="text/javascript"></script>
+	<script src="/static/assets/scripts/klorofil-common.js"></script>
+	<script src="/static/layer/layer.js"></script>
 	<!-- bootstrap time -->
-	<script src="__PUBLIC__/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+	<script src="/static/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
 	<!-- laydate time -->
-	<script src="__PUBLIC__/laydate/laydate.js"></script>
+	<script src="/static/laydate/laydate.js"></script>
 	<script>
         jQuery(function($) {
-            $('#content-load').load("{:URL('index/Index/home')}");
+            $('#content-load').load("<?php echo URL('index/Index/home'); ?>");
             $("#sidebar-nav a").click(function () {
                 if($(this).attr('data-href')){
                     $('#content-load').load($(this).attr('data-href'));
                 }
             });
         })
-		var addpiu = "{:url('index/Picture/add_pi')}";
-		var delpiu = "{:url('index/Picture/del_pi')}";
+		var addpiu = "<?php echo url('index/Picture/add_pi'); ?>";
+		var delpiu = "<?php echo url('index/Picture/del_pi'); ?>";
 	</script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:88:"D:\phpStudy\PHPTutorial\WWW\My_moneys\public/../application/index\view\Article\list.html";i:1561711932;}*/ ?>
 <!--视频 记录-->
 <div class="container-fluid">
     <h3 class="page-title">提审记录</h3>
@@ -45,26 +46,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                                {volist name="$artl_list" id="vo"}
+                                <?php if(is_array($artl_list) || $artl_list instanceof \think\Collection || $artl_list instanceof \think\Paginator): $i = 0; $__LIST__ = $artl_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                             <tr>
-                                <td>{$vo.id}</td>
-                                <td>{$vo.title}</td>
+                                <td><?php echo $vo['id']; ?></td>
+                                <td><?php echo $vo['title']; ?></td>
                                 <td>
-                                    {switch name="vo.isstate" }
-                                    {case value="1"}<span class="lab el label-warning">待审核</span>{/case}
-                                    {case value="2"}<span class="label label-success">通过</span></td>{/case}
-                                    {case value="3"}<span class="label label-danger">未通过</span>{/case}
-                                    {/switch}
+                                    <?php switch($vo['isstate']): case "1": ?><span class="lab el label-warning">待审核</span><?php break; case "2": ?><span class="label label-success">通过</span></td><?php break; case "3": ?><span class="label label-danger">未通过</span><?php break; endswitch; ?>
                                  <td class="text-center">
-                                    <button type="button" class="btn btn-primary btn-xs" onclick="a_hear('',{$vo.id})">编辑</button>
-<!--                                    <button type="button" class="btn btn-info btn-xs"  onclick="a_hear('liulan',{$vo.id},{$page})">预览</button>-->
+                                    <button type="button" class="btn btn-primary btn-xs" onclick="a_hear('',<?php echo $vo['id']; ?>)">编辑</button>
+<!--                                    <button type="button" class="btn btn-info btn-xs"  onclick="a_hear('liulan',<?php echo $vo['id']; ?>,<?php echo $page; ?>)">预览</button>-->
                                 </td>
                             </tr>
-                                {/volist}
+                                <?php endforeach; endif; else: echo "" ;endif; ?>
 
                         </tbody>
                     </table>
-                    {$pag_list}
+                    <?php echo $pag_list; ?>
                 </div>
             </div>
         </div>
@@ -72,15 +69,15 @@
 </div>
 <script>
     function whereFrom(where_id) {
-        $('#content-load').load( "{:url("Index/Article/list_index")}" + "?where=" + where_id );
+        $('#content-load').load( "<?php echo url("Index/Article/list_index"); ?>" + "?where=" + where_id );
     }
     function a_hear(type,id,page) {
-        // $('#content-load').load( "{:url("Index/Eqx/edit_index")}" + "?id=" + id );
-        var str = "{:url('Index/Article/edit_index')}";
+        // $('#content-load').load( "<?php echo url("Index/Eqx/edit_index"); ?>" + "?id=" + id );
+        var str = "<?php echo url('Index/Article/edit_index'); ?>";
         $("#content-load").load(str, {"id" : id, "type":type,"page":page});
     }
     function liulan(id) {
-        $('#content-load').load( "{:url("Index/Article/list_index")}" + "?page=" + id );
+        $('#content-load').load( "<?php echo url("Index/Article/list_index"); ?>" + "?page=" + id );
     }
 </script>
 <script>
